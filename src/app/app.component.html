@@ -1,0 +1,59 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-drawer-button">
+
+
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div class="container">
+
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-desktop mdl-cell--2-offset-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+    
+
+          <div class="mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--12-col-phone">
+              <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <thead>
+                <tr>
+                  <th [class.active]="order === 'id'"
+                      (click)="setOrder('id')"
+                      class="mdl-data-table__cell--non-numeric">
+                      
+                    ID <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'info.name'"
+                      (click)="setOrder('info.name')"
+                      class="mdl-data-table__cell--non-numeric"
+                  >
+                    Name <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'info.logoUrl'"
+                      (click)="setOrder('info.logoUrl')"
+                  >
+                    Logo URL <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'info.isOpen'" (click)="setOrder('info.isOpen')">
+                   By Status: <span [hidden]="reverse">▼   </span><span [hidden]="!reverse">▲ </span>
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let row of collection | orderBy: order:reverse:'case-insensitive'">
+                  <td>{{ row.id }}</td>
+                  <td class="mdl-data-table__cell--non-numeric">{{ row.info.name }}</td>
+                  <td>{{ row.info.logoUrl }}</td>
+                  <td>{{ row.info.isOpen }}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+       
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+
+
+</div>
